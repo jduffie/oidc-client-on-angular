@@ -42,8 +42,8 @@ export class AuthService {
   completeAuthentication(): Promise<void> {
     console.log('AuthService:completeAuthentication:' + this.user);
     return this.manager.signinRedirectCallback().then(user => {
-      console.log('AuthService:completeAuthentication then:' + this.user);
       this.user = user;
+      console.log('AuthService:completeAuthentication then:' + this.user);
       console.log('AuthService:completeAuthentication then:' + this.user.access_token);
     }).catch(reason => {console.log('AuthService:completeAuthentication then.reason' + reason); });
   }
