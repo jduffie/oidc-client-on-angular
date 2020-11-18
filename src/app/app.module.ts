@@ -8,19 +8,31 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {AuthService} from './services/auth.service';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { ProtectedTwoComponent } from './protected-two/protected-two.component';
+import { ApiCallComponent } from './api-call/api-call.component';
+import {TokenInterceptorService} from './services/token-interceptor.service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProtectedComponent, ProtectedTwoComponent,
     AuthCallbackComponent,
-    ProtectedTwoComponent
+    ApiCallComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [
+    AuthGuardService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

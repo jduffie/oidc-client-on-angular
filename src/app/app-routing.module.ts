@@ -4,6 +4,7 @@ import {ProtectedComponent} from './protected/protected.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import {AuthCallbackComponent} from './auth-callback/auth-callback.component';
 import {ProtectedTwoComponent} from './protected-two/protected-two.component';
+import {ApiCallComponent} from './api-call/api-call.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'auth-callback',
     component: AuthCallbackComponent
+  },
+  {
+    path: 'api-invoke',
+    component: ApiCallComponent,
+    canActivate: [AuthGuardService]
   }
 ];
 
