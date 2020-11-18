@@ -21,7 +21,9 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/silent-refresh.html",
+              {"glob": "**/*", "input": "./node_modules/oidc-client/", "output": "/"}
             ],
             "styles": [
               "src/styles.css"
@@ -85,7 +87,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "oidc-client.min.js"
             ],
             "styles": [
               "src/styles.css"

@@ -4,15 +4,22 @@ export class Env {
   static getClientSettings(): UserManagerSettings {
     return {
       userStore: new WebStorageStateStore({ store: window.sessionStorage }),
-      authority: '',
-      client_id: '',
+      authority: 'https://xgs-reach.us.auth0.com/',
+      client_id: 'zEJp6uhSGyZARMYhwOwi2D0n7rCDX2OS',
       redirect_uri: 'http://localhost:4200/auth-callback',
       post_logout_redirect_uri: 'http://localhost:4200/',
       response_type: 'id_token token',
+
+      // 'code' tells oidc-client to use authorization code flow and PKCE
+      //   but you must remove 'openid' from scope to not retrieve the
+      //   access_token and id_token
+      // response_type: 'code',
       scope: 'openid email profile api:customer:',
-      filterProtocolClaims: true,
+      // scope: 'email profile api:customer:',
+      filterProtocolClaims: false,
       loadUserInfo: true,
-      automaticSilentRenew: true
+      automaticSilentRenew: true,
+      silent_redirect_uri: 'http://localhost:4200/silent-refresh.html'
     };
   }
 }
