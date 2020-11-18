@@ -1,5 +1,5 @@
 
-***---> NOTE for this to work, you need to update following in the [env.ts](https://github.com/jduffie/oidc-client-on-angular/blob/main/src/app/env/env.ts) file <---
+__NOTE for this to work, you need to update following in the [env.ts](https://github.com/jduffie/oidc-client-on-angular/blob/main/src/app/env/env.ts) file__
 ```
       authority: '',
       client_id: '',
