@@ -18,9 +18,6 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     console.log('AuthService:isLoggedIn:' + this.user);
-    if (this.user == null) {
-      this.completeAuthentication();
-    }
     return this.user != null && !this.user.expired;
   }
 
@@ -41,10 +38,25 @@ export class AuthService {
 
   completeAuthentication(): Promise<void> {
     console.log('AuthService:completeAuthentication:' + this.user);
-    return this.manager.signinRedirectCallback().then(user => {
-      this.user = user;
-      console.log('AuthService:completeAuthentication then:' + this.user);
-      console.log('AuthService:completeAuthentication then:' + this.user.access_token);
-    }).catch(reason => {console.log('AuthService:completeAuthentication then.reason' + reason); });
+    return this.manager.signinRedirectCallback()
+      .then(user => {
+        this.user = user;
+        console.log('AuthService:completeAuthentication then token_type:' + this.user.token_type);
+        console.log('AuthService:completeAuthentication then access_token:' + this.user.access_token);
+        console.log('AuthService:completeAuthentication then id_token:' + this.user.id_token);
+        console.log('AuthService:completeAuthentication then scopes:' + this.user.scopes);
+        console.log('AuthService:completeAuthentication then profile.sid:' + this.user.profile.sid);
+        console.log('AuthService:completeAuthentication then profile.iss:' + this.user.profile.iss);
+        console.log('AuthService:completeAuthentication then profile.name:' + this.user.profile.name);
+        console.log('AuthService:completeAuthentication then profile.sub:' + this.user.profile.sub);
+        console.log('AuthService:completeAuthentication then profile.profile:' + this.user.profile.profile);
+        console.log('AuthService:completeAuthentication then state:' + this.user.state);
+        console.log('AuthService:completeAuthentication then session state:' + this.user.session_state);
+        console.log('AuthService:completeAuthentication then expired:' + this.user.expired);
+        console.log('AuthService:completeAuthentication then expires_in:' + this.user.expires_in);
+      })
+      .catch(reason => {
+        console.log('AuthService:completeAuthentication then.reason' + reason);
+      });
   }
 }

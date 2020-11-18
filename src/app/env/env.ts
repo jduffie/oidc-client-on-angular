@@ -6,7 +6,7 @@ export class Env {
       userStore: new WebStorageStateStore({ store: window.sessionStorage }),
       authority: '',
       client_id: '',
-      redirect_uri: 'http://localhost:4200/',
+      redirect_uri: 'http://localhost:4200/auth-callback',
       post_logout_redirect_uri: 'http://localhost:4200/',
       response_type: 'id_token token',
       scope: 'openid email profile api:customer:',
