@@ -1,14 +1,30 @@
-<h3><a routerLink="/">Home</a> | <a routerLink="/protected">Protected</a> | <a routerLink="/protected2">Protected Two</a></h3>
-
-
-
-<p><a routerLink="/">Home</a></p>
-<p><a routerLink="/protected">Protected</a></p>
-<p><a routerLink="/protected2">Protected 2</a></p>
-<p><a routerLink="/api-invoke">Api Invoke</a></p>
-
-
 <h1>
   {{title}}
 </h1>
+
+<h2>Objective</h2>
+Walk developer through the different software flows and integrations for authentication
+and authorization.  This project is stripped down to the bare minimum of just Angular with routing and
+a third party auth client - in this case we are using oidc-client java script library.
+
+<h2>Sequence</h2>
+<hr>
+<H3>Setup</H3>
+<ul>
+  <li><a href="{{clientSettingsUrl}}">UserManagerSettings</a> initial settings required by the client library.  See code comments.</li>
+  <li>Routing</li>
+</ul>
+<hr>
+<H3>Login Redirect to ID provider</H3>
+<hr>
+<h3>Login </h3>
+<hr>
+
+<p><a routerLink="/">NOT Protected</a> - no auth required to view</p>
+<p><a routerLink="/protected">Protected</a> - if not logged in, will trigger the login process</p>
+<p><a routerLink="/protected2">Protected 2</a> -  </p>
+<p><a routerLink="/api-invoke">Api Invoke</a></p>
+
+
+
 <router-outlet></router-outlet>

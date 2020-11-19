@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './services/auth.service';
-import {HttpClient} from '@angular/common/http';
+import {Env} from './env/env';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,14 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'angular4-oidcclientjs-example';
+  title = 'Angular oidc-client Integration';
+  clientSettingsUrl: string;
 
-  constructor() { }
+  constructor() {
+    this.clientSettingsUrl = Env.getCoreSettings().gitBaseUrl + 'src/app/env/env.ts';
+  }
 
   ngOnInit() {
     // this.authService.completeAuthentication();
   }
-
 }

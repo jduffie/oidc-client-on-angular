@@ -1,6 +1,15 @@
-import {UserManagerSettings, WebStorageStateStore} from 'oidc-client';
+import {OidcClientSettings, UserManagerSettings, WebStorageStateStore} from 'oidc-client';
+
+export interface CoreSettings  {
+  readonly gitBaseUrl?: string;
+}
 
 export class Env {
+  static getCoreSettings(): CoreSettings {
+    return {
+      gitBaseUrl: 'https://github.com/jduffie/oidc-client-on-angular/blob/main/'
+    };
+  }
   static getClientSettings(): UserManagerSettings {
     return {
       userStore: new WebStorageStateStore({ store: window.sessionStorage }),
